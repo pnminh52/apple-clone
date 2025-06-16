@@ -1,6 +1,6 @@
-import { useGSAP } from "@gsap/react"
 import gsap from "gsap";
 import ProductView from "./ProductView";
+import { rightImg } from "../../../utils";
 import { useEffect, useRef, useState } from "react";
 import { yellowImg } from "../../../utils";
 import * as THREE from 'three';
@@ -10,6 +10,8 @@ import { models, sizes } from "../../../constants";
 import { animateWithGsapTimeline } from "../../../utils/animations";
 
 const Model = () => {
+  const titleRef = useRef(null);
+const descRef = useRef(null);
   const [size, setSize] = useState('small');
   const [model, setModel] = useState({
     title: 'iPhone 15 Pro in Natural Titanium',
@@ -38,20 +40,37 @@ const Model = () => {
         duration: 2
       })
     }
-  }, [size])
-
-  useGSAP(() => {
-    gsap.to('#heading', { y: 0, opacity: 1 })
-    gsap.to('#title', { y: 0, opacity: 1 })
+  }, [size]);
+  useEffect(() => {
+    gsap.fromTo(
+      titleRef.current,
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1.2, ease: "power3.out" }
+    );
+  
+    gsap.fromTo(
+      descRef.current,
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: "power3.out", delay: 0.6 }
+    );
   }, []);
+  
+
+
 
   return (
-    <section className="common-padding">
+    <section className="">
       <div className="screen-max-width px-6">
-      <div id="title" >
-            <h1 className='  title-mobile  py-6' >Take a closer look.</h1>
-            <p className="text-blue-600 underline">More info about this product?</p>
-      </div>
+    
+      <h1 ref={titleRef} className="title-mobile py-4">
+  Get the highlights.
+</h1>
+
+<div ref={descRef} className="flex items-center gap-1.5">
+  <p className="text-blue-600 underline">Watch a event</p>
+  <img src={rightImg} alt="event" />
+</div>
+
         
 
 

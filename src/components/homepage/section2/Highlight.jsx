@@ -10,7 +10,7 @@ const Highlight = () => {
         gsap.to('.link', { opacity: 1, y:0, duration:1, stagger:0.25, delay:2.5 });
       }, []);
   return (
-    <div id='highlights' className='w-screen block sm:hidden  px-6 sm:px-20 overflow-hidden h-full bg-[#0C0C0C] '>
+    <div  className='w-screen block sm:hidden  px-6 sm:px-20 overflow-hidden h-full bg-[#0C0C0C] '>
       <div className=''>
             <h1 className=' title-mobile  py-6' id='title'>Get the highlights.</h1>
       </div>
